@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical">
 
     <ImageView
         android:id="@+id/imgCity"
@@ -10,9 +11,8 @@
 
     <TextView
         android:paddingLeft="20px"
-        android:layout_alignTop="@id/imgCity"
         android:id="@+id/txtCityName"
-        android:textSize="25px"
+        android:textSize="25sp"
         android:layout_alignParentRight="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,7 +21,7 @@
     <TextView
         android:layout_marginTop="16px"
         android:id="@+id/txtStateName"
-        android:textSize="18px"
+        android:textSize="18sp"
         android:layout_below="@id/txtCityName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

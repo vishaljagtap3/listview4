@@ -53,12 +53,14 @@ public class MainActivity extends AppCompatActivity {
 
             City citySelected = mListCities.get( position );
 
-            if( citySelected.isSelected() ){
+            citySelected.setSelected( !citySelected.isSelected() );
+
+            /*if( citySelected.isSelected() ){
                 citySelected.setSelected( false );
             }
             else {
                 citySelected.setSelected( true );
-            }
+            }*/
             mCityAdapter.notifyDataSetChanged();
 
             Toast.makeText( MainActivity.this, "You clicked " + citySelected.getName(), Toast.LENGTH_LONG ).show();

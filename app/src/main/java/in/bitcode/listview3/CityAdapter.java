@@ -1,18 +1,9 @@
 package in.bitcode.listview3;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -20,14 +11,15 @@ public class CityAdapter extends BaseAdapter {
 
     private Context mContext;
     private ArrayList<City> mListCities;
-    public CityAdapter(Context context, ArrayList<City> listCities ) {
+
+    public CityAdapter(Context context, ArrayList<City> listCities) {
         this.mContext = context;
         mListCities = listCities;
     }
 
     @Override
     public int getCount() {
-        if( mListCities == null ) {
+        if (mListCities == null) {
             return 0;
         }
         return mListCities.size();
@@ -36,35 +28,18 @@ public class CityAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        RelativeLayout cityContainer;
-        ImageView imgCity;
-        TextView txtCityName, txtStateName;
+        CityView cityView;
 
-        if( convertView == null ) {
-            LayoutInflater layoutInflater = LayoutInflater.from( mContext );
-            cityContainer = (RelativeLayout) layoutInflater.inflate( R.layout.city, null);
+        if (convertView == null) {
+            cityView = new CityView(mContext);
         }
         else {
-            cityContainer = (RelativeLayout) convertView;
+            cityView = (CityView)convertView;
         }
 
+        cityView.setCity(mListCities.get(position));
 
-        imgCity = cityContainer.findViewById( R.id.imgCity );
-        txtCityName = cityContainer.findViewById( R.id.txtCityName );
-        txtStateName = cityContainer.findViewById( R.id.txtStateName );
-
-        City city = mListCities.get( position );
-        imgCity.setImageResource( city.getImageId() );
-        txtCityName.setText( city.getName() );
-        if( city.isSelected() ) {
-            txtCityName.setTextColor(Color.BLUE );
-        }
-        else {
-            txtCityName.setTextColor(Color.BLACK );
-        }
-        txtStateName.setText( city.getState() );
-
-        return cityContainer;
+        return cityView;
     }
 
     @Override
